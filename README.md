@@ -434,10 +434,3 @@ Contributions are welcome! Areas for improvement:
 
 This implementation is for research and educational purposes.
 
-## 👥 Authors
-
-Implementation improvements focused on data integrity, proper validation, and comprehensive evaluation.
-
----
-
-**Note**: Always use `improved.ipynb` for training and evaluation. The `trash.ipynb` file is kept for reference but contains data leakage issues that lead to unrealistic performance metrics.
