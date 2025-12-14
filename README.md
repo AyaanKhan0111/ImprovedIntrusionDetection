@@ -2,13 +2,57 @@
 
 ## Overview
 
-This repository contains an improved implementation of network intrusion detection systems using ensemble machine learning models. The project focuses on binary classification (Normal vs. Attack) for network traffic analysis using two prominent IDS datasets: **UNSW-NB15** and **ToN-IoT**.
+This repository contains **two distinct implementations** of network intrusion detection systems using ensemble machine learning models:
 
-The implementation includes advanced techniques such as SHAP-based feature selection, multiple ensemble models (LightGBM, XGBoost, TabNet), online learning with River, adversarial robustness evaluation, and cross-dataset transfer learning.
+1. **Base Implementation (base.ipynb)** - Based on Adewole et al. (2025) published in Sensors Journal
+   - Datasets: CIC-IDS2017 and CICIoT2023
+   - Focus: Binary and multi-class classification
+   - Models: Random Forest, AdaBoost, XGBoost, LightGBM, CatBoost
+   
+2. **Improved Implementation (improved.ipynb)** - Enhanced version with data leakage fixes
+   - Datasets: UNSW-NB15 and ToN-IoT
+   - Focus: Binary classification with advanced techniques
+   - Models: LightGBM, XGBoost, TabNet, River online learning
+
+Both implementations focus on detecting network intrusions, but they use different datasets, methodologies, and evaluation approaches.
 
 ## 📊 Datasets
 
-### UNSW-NB15 Dataset
+### Base Paper Datasets (base.ipynb)
+
+#### CIC-IDS2017 Dataset
+The CIC-IDS2017 dataset is a comprehensive network intrusion detection dataset created by the Canadian Institute for Cybersecurity.
+
+| Property | Details |
+|----------|---------|
+| **Source** | University of New Brunswick (UNB) |
+| **Total Records** | 2,830,743 records |
+| **Features** | 78 features (after removing duplicate column) |
+| **Attack Categories** | 14 types (DDoS, DoS Hulk, PortScan, Bot, FTP-Patator, SSH-Patator, Web Attack, Infiltration, etc.) |
+| **Normal Traffic** | BENIGN class |
+| **Binary Classification** | BENIGN vs. Attack (all attack types combined) |
+| **Multi-class** | 15 classes (1 BENIGN + 14 attack types) |
+| **Key Features** | Flow duration, packet counts, byte counts, inter-arrival times, flags, header lengths |
+| **Collection Period** | July 3-7, 2017 |
+
+#### CICIoT2023 Dataset
+The CICIoT2023 dataset is specifically designed for IoT security research with modern attack scenarios.
+
+| Property | Details |
+|----------|---------|
+| **Source** | Canadian Institute for Cybersecurity |
+| **Total Records** | 45,019,234 records (21,005,729 after removing ~53% duplicates) |
+| **Features** | 40 features |
+| **Attack Categories** | 33 IoT-specific attack types |
+| **Normal Traffic** | Benign class |
+| **Binary Classification** | Benign vs. Attack |
+| **Attack Types** | DDoS-ICMP-Flood, DDoS-UDP-Flood, Mirai, DNS-Spoofing, MITM, SQL Injection, etc. |
+| **Data Splits** | Pre-split into train, validation, and test sets |
+| **Year** | 2023 |
+
+### Improved Paper Datasets (improved.ipynb)
+
+#### UNSW-NB15 Dataset
 The UNSW-NB15 dataset is a comprehensive network intrusion detection dataset created by the Australian Centre for Cyber Security (ACCS).
 
 | Property | Details |
